@@ -94,6 +94,7 @@ describe("horizontal orientation value detection", () => {
     let images = await toImage(sn)
     expect(images).not.toBeUndefined()
     for await (const [index, image] of images.entries()) {
+      expect(image.width).toBeGreaterThan(image.height); // expect a landscape image
       await image.save(`tests/output/horizontal_1090.note-${index}.png`)
     }
   }, 30000)
@@ -103,6 +104,7 @@ describe("horizontal orientation value detection", () => {
     let images = await toImage(sn)
     expect(images).not.toBeUndefined()
     for await (const [index, image] of images.entries()) {
+      expect(image.width).toBeGreaterThan(image.height); // expect a landscape image
       await image.save(`tests/output/horizontal_1270.note-${index}.png`)
     }
   }, 30000)
@@ -113,6 +115,7 @@ describe("horizontal orientation value detection", () => {
       let images = await toImage(sn)
       expect(images).not.toBeUndefined()
       for await (const [index, image] of images.entries()) {
+        expect(image.height).toBeGreaterThan(image.width); // expect a portrait image
         await image.save(`tests/output/vertical_1000.note-${index}.png`)
       }
     }, 30000)
@@ -122,6 +125,7 @@ describe("horizontal orientation value detection", () => {
     let images = await toImage(sn)
     expect(images).not.toBeUndefined()
     for await (const [index, image] of images.entries()) {
+      expect(image.height).toBeGreaterThan(image.width); // expect a portrait image
       await image.save(`tests/output/vertical_1180.note-${index}.png`)
     }
   }, 30000)
